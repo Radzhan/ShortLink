@@ -7,6 +7,10 @@ const UrlSchema = new Schema({
         type: String,
         required: true,
     },
+    shortUrl: {
+        type: String,
+        required: true,
+    }
 });
 
 const Url = mongoose.model('Url', UrlSchema);

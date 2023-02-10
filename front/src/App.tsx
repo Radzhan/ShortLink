@@ -12,19 +12,20 @@ function App() {
   const post = async () => {
     await dispatch(setUrl(link));
   };
-  
+
   const onCardChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    
+
     setLink((prev) => ({ ...prev, [name]: value }));
   };
-  
+
   const onSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     post();
-    console.log(link)
+    setLink({
+      url: "",
+    });
   };
-  console.log(postLink)
   return (
     <div className="App">
       <h1>Shorten your link</h1>
@@ -42,7 +43,10 @@ function App() {
           Contained
         </Button>
       </form>
-      <p>Your link now looks like this</p>
+      <p>
+        <b>Your link now looks like this</b>
+      </p>
+      <p>http://localhost:8000/links/{postLink.shortUrl}</p>
     </div>
   );
 }

@@ -6,13 +6,13 @@ import linksRouter from "./routers/links";
 const app = express();
 const port = 8000;
 
-app.use(express.json());
 app.use(cors());
-app.use("/", linksRouter);
+app.use(express.json());
+app.use("/links", linksRouter);
 
 const run = async () => {
   mongoose.set("strictQuery", false);
-  await mongoose.connect("mongodb://localhost/shorten");
+  await mongoose.connect("mongodb://localhost/Shorten");
 
   app.listen(port, () => {
     console.log("we are live on " + port);
